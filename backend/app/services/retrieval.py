@@ -24,7 +24,10 @@ def _embed(text: str) -> list[float]:
 
 
 def _collection():
-    return _chroma.get_or_create_collection(name=COLLECTION_NAME)
+    return _chroma.get_or_create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"},
+    )
 
 
 def _hit_to_entry(doc: str, meta: dict, entry_id: str, distance: float) -> dict:

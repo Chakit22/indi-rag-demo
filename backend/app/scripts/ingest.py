@@ -30,7 +30,10 @@ def main() -> None:
         chroma.delete_collection(name=COLLECTION_NAME)
     except Exception:
         pass
-    col = chroma.create_collection(name=COLLECTION_NAME)
+    col = chroma.create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"},
+    )
 
     batch_size = 50
     for i in range(0, len(entries), batch_size):
