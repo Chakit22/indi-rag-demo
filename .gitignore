@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.env
+.env.local
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+.vercel/
+out/
+build/
+dist/
+.DS_Store
+
+# Chroma
+chroma_db/
+*.sqlite3
+
+# Local
+.vscode/
+.idea/
+*.log
+.cache/

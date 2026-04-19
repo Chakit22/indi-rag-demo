@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: indi-rag-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: EMBED_MODEL
+        value: text-embedding-3-small
+      - key: LLM_MODEL
+        value: gpt-4o-mini
+      - key: CHROMA_PATH
+        value: /var/data/chroma
+      - key: PYTHON_VERSION
+        value: 3.11.9
+    disk:
+      name: chroma-data
+      mountPath: /var/data
+      sizeGB: 1
+    healthCheckPath: /health
